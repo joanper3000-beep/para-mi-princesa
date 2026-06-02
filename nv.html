@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Mi Princesa Carla ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff4d6d,#ff9a9e);
+    overflow:hidden;
+}
+
+/* BOTÓN */
+#btnAbrir{
+    padding:18px 40px;
+    font-size:20px;
+    border:none;
+    border-radius:50px;
+    background:white;
+    color:#ff2e63;
+    cursor:pointer;
+    font-weight:bold;
+    box-shadow:0 10px 20px rgba(0,0,0,.2);
+    transition:.3s;
+    z-index:10;
+}
+
+#btnAbrir:hover{
+    transform:scale(1.05);
+}
+
+/* CARTA */
+.letter{
+    position:absolute;
+    width:90%;
+    max-width:420px;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+
+    opacity:0;
+    transform:translateY(100px);
+    transition:1s;
+
+    z-index:5;
+}
+
+/* cuando aparece */
+.letter.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+h2{
+    color:#ff2e63;
+    margin-bottom:10px;
+}
+
+p{
+    color:#444;
+    line-height:1.5;
+}
+
+/* CORAZONES */
+.heart{
+    position:absolute;
+    color:white;
+    font-size:20px;
+    animation:float 7s linear infinite;
+    pointer-events:none;
+}
+
+@keyframes float{
+    from{transform:translateY(100vh);opacity:1;}
+    to{transform:translateY(-120px);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<button id="btnAbrir" onclick="abrirCarta()">💌 Ábreme</button>
+
+<div class="letter" id="carta">
+    <h2>❤️ Para Mi Princesa Carla ❤️</h2>
+
+    <p>
+        ❤️ Para Mi Princesa Carla ❤️
+
+Desde que llegaste a mi vida, todo cambió para mejor.
+No hay un solo día en el que no me sienta agradecido por tenerte conmigo.
+
+Eres una persona increíble, con una forma de ser que me hace feliz incluso en los días difíciles.
+Tu sonrisa tiene algo especial que me calma, me motiva y me hace querer seguir adelante.
+
+Quiero que sepas que contigo no necesito nada más para ser feliz.
+Eres suficiente, eres importante, eres única para mí.
+
+Cada momento que pasamos juntos se vuelve un recuerdo que guardo con mucho cariño.
+Desde las cosas más simples hasta las más importantes, todo contigo tiene valor.
+
+A veces no encuentro las palabras exactas para explicarte lo que siento,
+pero si pudiera resumirlo sería esto: te quiero de una forma muy real, muy sincera y muy profunda.
+
+No prometo perfección, pero sí prometo estar contigo, apoyarte, cuidarte y hacerte sentir especial siempre que pueda.
+
+Gracias por ser tú, por elegirme y por dejarme formar parte de tu vida.
+
+Te quiero muchísimo, más de lo que las palabras pueden expresar 💖
+
+Con todo mi amor,
+Tu persona que siempre piensa en ti ❤️
+    </p>
+</div>
+
+<script>
+
+function abrirCarta(){
+
+    const boton = document.getElementById("btnAbrir");
+    const carta = document.getElementById("carta");
+
+    // ocultar botón
+    boton.style.display = "none";
+
+    // mostrar carta (IMPORTANTE: timeout ayuda a que anime bien)
+    setTimeout(()=>{
+        carta.classList.add("show");
+    },100);
+}
+
+/* corazones */
+function crear(){
+    const c=document.createElement("div");
+    c.className="heart";
+    c.innerHTML="❤️";
+    c.style.left=Math.random()*100+"vw";
+    c.style.fontSize=(15+Math.random()*20)+"px";
+
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),7000);
+}
+
+setInterval(crear,250);
+
+</script>
+
+</body>
+</html>
